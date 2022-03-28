@@ -11,21 +11,18 @@ public class ReadCsvWithBuffer implements ReadCsv{
     // в худшем случае когда нужно отфильтровать все строки использует 7 мб за 68 мс
     @Override
     public List<String[]> readCsv(String fileName, int numberCols, String input) throws IOException {
-        List<String[]> lines = new ArrayList<>();
-        BufferedReader reader = new BufferedReader(new FileReader(fileName),8192 * 16);
-        String tmp;
-        String[] list1;
-        while ((tmp = reader.readLine()) != null){
-            list1 = tmp.split(",");
-            if (list1[numberCols].contains("\""+ input)){
-                lines.add(list1);
+        List<String[]> lines = new ArrayList<>(8000);;
+        try(BufferedReader reader = new BufferedReader(new FileReader(fileName), 1024)) {
+            String tmp;
+            while ((tmp = reader.readLine()) != null) {
+                String[] list1 = tmp.split(",");
+                if (list1[numberCols].startsWith(input)) {
+                    lines.add(list1);
+                }
             }
         }
-        reader.close();
-        //lines.sort(Comparator.comparing(o -> o[numberCols]));
-        for(int i = 0; i < lines.size(); i++){
-
-        }
+        lines.sort(Comparator.comparing(o -> o[numberCols]));
         return lines;
     }
+
 }
