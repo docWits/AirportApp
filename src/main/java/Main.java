@@ -1,11 +1,15 @@
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+
+
     public static void main(String[] args) throws IOException {
 
-        String fileName = "C:\\Users\\Dmitry\\Desktop\\AirportApp\\src\\main\\resources\\airports.csv";
+        String fileName = System.getProperty("user.dir") + "\\src\\main\\resources\\airports.csv";
+
         int numberCols = 1;
         if (args.length > 0){
             try {
@@ -16,7 +20,7 @@ public class Main {
         }
         Scanner sc = new Scanner(System.in);
         System.out.println("Введите строку: ");
-        String input = "";
+        String input;
         if (numberCols == 0 || numberCols ==6 || numberCols == 7 || numberCols == 8 || numberCols == 9){
             input = sc.nextLine();
         }else {
