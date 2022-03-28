@@ -3,4 +3,5 @@
 
 # Для запуска
 AirportApp/out/artifacts/AirportApp_jar
+
 java -jar -Xmx9m airportapp.jar
