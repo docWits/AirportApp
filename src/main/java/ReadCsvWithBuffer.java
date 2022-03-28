@@ -9,8 +9,7 @@ import java.util.Objects;
 
 public class ReadCsvWithBuffer implements ReadCsv{
 
-    // в обычном случае находит и фильтрует строки используя 13 мб за 61 мс
-    // в худшем случае когда нужно отфильтровать все строки использует 7 мб за 68 мс
+
     @Override
     public List<String[]> readCsv(String fileName, int numberCols, String input) throws IOException {
 
