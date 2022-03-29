@@ -1,9 +1,12 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class Main {
+
 
 
     public static void main(String[] args) throws IOException {
@@ -38,8 +41,10 @@ public class Main {
             }
             System.out.print("\n");
         });
+
+
         System.out.println("Используемая память:" + ((Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory())/1048576));
-        System.out.println("Количество найденных строк равно " + result.size());
+        System.out.println  ("Количество найденных строк равно " + result.size());
         System.out.println("Общее время:" + (finish-start) + " миллисекунда");
     }
 }
